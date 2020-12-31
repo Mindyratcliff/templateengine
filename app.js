@@ -15,70 +15,40 @@ const managerQuestions = () =>
       message: "Please enter the ID of the employee",
     },
     {
-      type: "list",
-      name: "role",
-      message: ["manager", "engineer", "intern"],
-    },
-    {
-       type: "confirm",
-       name: "roleConfirm",
-       message: 
-
-    },
-    {
       type: "input",
       name: "email",
       message: "Please provide the email of the employee",
     },
     {
-       type: "" 
-    }
-  ]);
+      type: "list",
+      name: "role",
+      message: ["manager", "engineer", "intern"],
+    },
 
-const internQuestions = () =>
-  inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "Please enter the name of the intern",
-    },
-    {
-      type: "input",
-      name: "ID",
-      message: "Please enter the ID of the intern",
-    },
-    {
-      type: "input",
-      name: "school",
-      message: "Please enter which school or university the intern attends",
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "Please provide the email of the intern",
-    },
-  ]);
+])
+    .then((data) => {
+        if (data.role == "manager") {
+                inquirer.prompt({
+                    type: "input",
+                    name: "office",
+                    message: "What is the office number for the manager?",
+                })
+        }
+        if (data.role == "engineer"){
+                inquirer.prompt({
+                    type: "input",
+                    name: "github",
+                    message: "What is the GitHub profile name for the engineer?",
+                })
 
-const engineerQuestions = () =>
-  inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "Please enter the name of the engineer",
-    },
-    {
-      type: "input",
-      name: "ID",
-      message: "Please enter the ID of the engineer",
-    },
-    {
-      type: "input",
-      name: "github",
-      message: "Please enter the GitHub account for the engineer",
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "Please provide the email of the engineer",
-    },
-  ]);
+        }
+        if (data.role == "intern"){
+            inquirer.prompt({
+                type: "input",
+                name: "school",
+                message: "Which school does the intern attend?"
+            })
+
+        }
+
+
