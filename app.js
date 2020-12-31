@@ -19,6 +19,7 @@ const managerQuestions = () =>
       name: "email",
       message: "Please provide the email of the employee",
     },
+    //Provide the user with the option to select which kind of employee to add.
     {
       type: "list",
       name: "role",
@@ -26,20 +27,23 @@ const managerQuestions = () =>
     },
 
 ])
+//then ask questions based on the role of the employee
     .then((data) => {
         if (data.role == "manager") {
                 inquirer.prompt({
                     type: "input",
                     name: "office",
                     message: "What is the office number for the manager?",
-                })
+                }).then((managerData)) => {
+                    
+                }
         }
         if (data.role == "engineer"){
                 inquirer.prompt({
                     type: "input",
                     name: "github",
                     message: "What is the GitHub profile name for the engineer?",
-                })
+                }).then((engineerData)) =>
 
         }
         if (data.role == "intern"){
@@ -47,7 +51,7 @@ const managerQuestions = () =>
                 type: "input",
                 name: "school",
                 message: "Which school does the intern attend?"
-            })
+            }).then((internData)) => 
 
         }
 
