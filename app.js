@@ -7,23 +7,32 @@ const managerQuestions = () =>
     {
       type: "input",
       name: "name",
-      message: "Please enter the name of the team manager",
+      message: "Please enter the name of the employee you want to add",
     },
     {
       type: "input",
       name: "ID",
-      message: "Please enter the ID of the team manager",
+      message: "Please enter the ID of the employee",
     },
     {
-      type: "input",
-      name: "office",
-      message: "Please enter the office number for the team manager",
+      type: "list",
+      name: "role",
+      message: ["manager", "engineer", "intern"],
+    },
+    {
+       type: "confirm",
+       name: "roleConfirm",
+       message: 
+
     },
     {
       type: "input",
       name: "email",
-      message: "Please provide the email of the team manager",
+      message: "Please provide the email of the employee",
     },
+    {
+       type: "" 
+    }
   ]);
 
 const internQuestions = () =>
