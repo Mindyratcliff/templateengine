@@ -1,5 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const Employee = require("./Employee");
+const Engineer = require("./Engineer");
+const Intern = require("./Intern");
+const Manager = require("./Manager")
+const render = require("lib/htmlRenderer")
 
 //I want to generate a webpage that displays my team's basic info
 const questions = () =>
@@ -35,19 +40,11 @@ const questions = () =>
                     name: "office",
                     message: "What is the office number for the manager?",
                 }).then((managerData) => {
-                    const managerProfile = fs.appendFile(
-                        `<div class="card" style="width: 18rem;">
-                        <img src="https://www.shutterstock.com/image-vector/online-training-process-icon-flat-style-1176599782" class="card-img-top" alt="Icon for directory">
-                        <div class="card-body">
-                          <h5 class="card-title">${data.name}</h5>
-                          <p class="card-text">${data.role}</p>
-                          <p class="card-text">${data.email}</p>
-                          <p class="card-text">${managerData.officeNumber}</p>
-                        </div>
-                      </div>`
+                    new Manager(data.name, data.ID, data.email, managerData.office);
+                }
                     );
                 }
-                );
+                ;
         
         if (data.role == "engineer"){
                 inquirer.prompt({
@@ -55,17 +52,7 @@ const questions = () =>
                     name: "github",
                     message: "What is the GitHub profile name for the engineer?",
                 }).then((engineerData) => {
-                    const engineerProfile = fs.appendFile(
-                        `<div class="card" style="width: 18rem;">
-                        <img src="https://www.shutterstock.com/image-vector/online-training-process-icon-flat-style-1176599782" class="card-img-top" alt="Icon for directory">
-                        <div class="card-body">
-                          <h5 class="card-title">${data.name}</h5>
-                          <p class="card-text">${data.role}</p>
-                          <p class="card-text">${data.email}</p>
-                          <p class="card-text">${engineerData.github}</p>
-                        </div>
-                      </div>`
-                    );
+                    new Engineer(data.name, data.ID, data.email, engineerData.github);
                 }
 
                 )
@@ -76,17 +63,7 @@ const questions = () =>
                 name: "school",
                 message: "Which school does the intern attend?"
             }).then((internData) => {
-                const internProfile = fs.appendFile(
-                    `<div class="card" style="width: 18rem;">
-                    <img src="https://www.shutterstock.com/image-vector/online-training-process-icon-flat-style-1176599782" class="card-img-top" alt="Icon for directory">
-                    <div class="card-body">
-                      <h5 class="card-title">${data.name}</h5>
-                      <p class="card-text">${data.role}</p>
-                      <p class="card-text">${data.email}</p>
-                      <p class="card-text">${internData.school}</p>
-                    </div>
-                  </div>`
-                );
+                new Intern(data.name, data.ID, data.email, internData.school)
             }
             )
 
