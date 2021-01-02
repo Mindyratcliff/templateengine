@@ -25,6 +25,8 @@ This is a command line application which dynamically generates team roster html 
 ## Usage
 To use this, the application is invoked by the command prompt with --- node app.js fileName 
 
+Screen Shot of Product 
+![ScreenShot](screenshot.png)
 
 Full Demo 
 
