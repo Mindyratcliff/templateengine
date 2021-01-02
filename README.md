@@ -29,6 +29,7 @@ Screen Shot of Product
 ![ScreenShot](screenshot.png)
 
 Full Demo 
+![FullDemo](demo.gif)
 
 
 
