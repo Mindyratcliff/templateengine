@@ -1,7 +1,7 @@
 # Team Template Engine
 
  
- ![JavaScript](https://img.shields.io/github/languages/top/Mindyratcliff/readMeFileWriter) ![Node](https://img.shields.io/badge/-nodejs-green) ![WomeninTech](https://img.shields.io/badge/womanmade-100%25-ff69b4)
+ ![JavaScript](https://img.shields.io/github/languages/top/Mindyratcliff/templateengine) ![Node](https://img.shields.io/badge/-nodejs-green) ![WomeninTech](https://img.shields.io/badge/womanmade-100%25-ff69b4)
 
  
 
