@@ -8,9 +8,7 @@ const render = require("./lib/htmlRenderer")
 
 const employeeArray = [];
 
-//I want to generate a webpage that displays my team's basic info
-const questions = () =>
-  inquirer.prompt([
+const questions = [
     {
       type: "input",
       name: "name",
@@ -33,53 +31,80 @@ const questions = () =>
       choices: ["manager", "engineer", "intern"],
     },
 
-])
-//then ask questions based on the role of the employee
-    .then((data) => {
+
+]
+
+const ask = () => {
+    inquirer.prompt(questions).then((data) => {
         if (data.role == "manager") {
-                inquirer.prompt({
-                    type: "input",
-                    name: "office",
-                    message: "What is the office number for the manager?",
-                }).then((managerData) => {
-                    let newManager = new Manager(data.name, data.ID, data.email, managerData.office);
-                    employeeArray.push(newManager);
-                }
-                    );
-                }
-                ;
-        
+        askManager();
+        }
         if (data.role == "engineer"){
-                inquirer.prompt({
-                    type: "input",
-                    name: "github",
-                    message: "What is the GitHub profile name for the engineer?",
-                }).then((engineerData) => {
-                    let newEngineer = new Engineer(data.name, data.ID, data.email, engineerData.github);
-                    employeeArray.push(newEngineer);
-                }
-
-                )
-            }
+        askEngineer();
+        }
         if (data.role == "intern"){
-            inquirer.prompt({
-                type: "input",
-                name: "school",
-                message: "Which school does the intern attend?"
-            }).then((internData) => {
-                let newIntern = new Intern(data.name, data.ID, data.email, internData.school);
-                employeeArray.push(newIntern);
-            }
-            )
+        askIntern();
+        }
+        askAgain();
+    })
+}
 
-        };
-        
-        
-
+const askManager = () => {
+    inquirer.prompt({
+        type: "input",
+        name: "office",
+        message: "What is the office number for the manager?",
+    }).then((managerData) => {
+        let newManager = new Manager(data.name, data.ID, data.email, managerData.office);
+        employeeArray.push(newManager);
+        let html = render(employeeArray);
+        console.log(html);
     }
-    console.log("Success! Your employee has been added.")
-    
+        );
+};
+
+const askEngineer = () => {
+    inquirer.prompt({
+        type: "input",
+        name: "github",
+        message: "What is the GitHub profile name for the engineer?",
+    }).then((engineerData) => {
+        let newEngineer = new Engineer(data.name, data.ID, data.email, engineerData.github);
+        employeeArray.push(newEngineer);
+        let html = render(employeeArray);
+    }
+
+    );
+};
+
+const askIntern = () => {
+    inquirer.prompt({
+        type: "input",
+        name: "school",
+        message: "Which school does the intern attend?"
+    }).then((internData) => {
+        let newIntern = new Intern(data.name, data.ID, data.email, internData.school);
+        employeeArray.push(newIntern);
+        let html = render(employeeArray);
+    }
     );
 
-questions()
-render(employeeArray);
+
+};
+
+const askAgain = () => {
+    inquirer.prompt({
+            type: 'confirm',
+            name: 'askAgain',
+            message: 'Would you like to add another employee (just hit enter for YES)?',
+            default: true,
+    }).then((answer) => {
+        if (answer.askAgain) {
+            ask();
+
+        }
+    }
+    );
+
+
+};
