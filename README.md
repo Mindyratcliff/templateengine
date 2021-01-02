@@ -5,7 +5,7 @@
 
  
 
-This is a command line application which dynamically generates team roster html file in order to track employee information.
+This is a command line application which dynamically generates a team roster html file in order to track employee information.
 
 ## Table of Contents
 1.) [Usage](#usage)
@@ -23,7 +23,7 @@ This is a command line application which dynamically generates team roster html 
 7.) [License](#license)
 
 ## Usage
-To use this, the application is invoked by the command prompt with --- node app.js fileName 
+To use this, the application is invoked by the command prompt with --- node app.js 
 
 Screen Shot of Product 
 ![ScreenShot](screenshot.png)
@@ -34,6 +34,7 @@ Full Demo
 
 ## Installation 
 The user will need to have Node.js installed along with the Inquirier module. 
+Be sure to npm i to install all dependencies! 
 
 ## Credits
 References were made to www.nodejs.com and www.npmjs.com
@@ -42,7 +43,7 @@ References were made to www.nodejs.com and www.npmjs.com
 Please refer to the Contributor Covenant, version 2.0, available at https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
 
 ## Test Instructions 
-Refer to www.nodejs.com for documentation on the use of Node.js.
+In the tests folder, tests are available for each employee role. Run tests with Jest -- npm run test
 
 ## Questions/Contact 
 Mindy Ratcliff
