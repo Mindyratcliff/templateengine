@@ -1,10 +1,12 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Employee = require("./Employee");
-const Engineer = require("./Engineer");
-const Intern = require("./Intern");
-const Manager = require("./Manager")
-const render = require("lib/htmlRenderer")
+const Employee = require("./lib/Employee")
+const Engineer = require("./lib/Engineer.js");
+const Intern = require("./lib/Intern.js");
+const Manager = require("./lib/Manager.js")
+const render = require("./lib/htmlRenderer")
+
+const employeeArray = [];
 
 //I want to generate a webpage that displays my team's basic info
 const questions = () =>
@@ -28,7 +30,7 @@ const questions = () =>
     {
       type: "list",
       name: "role",
-      message: ["manager", "engineer", "intern"],
+      choices: ["manager", "engineer", "intern"],
     },
 
 ])
@@ -40,7 +42,8 @@ const questions = () =>
                     name: "office",
                     message: "What is the office number for the manager?",
                 }).then((managerData) => {
-                    new Manager(data.name, data.ID, data.email, managerData.office);
+                    let newManager = new Manager(data.name, data.ID, data.email, managerData.office);
+                    employeeArray.push(newManager);
                 }
                     );
                 }
@@ -52,7 +55,8 @@ const questions = () =>
                     name: "github",
                     message: "What is the GitHub profile name for the engineer?",
                 }).then((engineerData) => {
-                    new Engineer(data.name, data.ID, data.email, engineerData.github);
+                    let newEngineer = new Engineer(data.name, data.ID, data.email, engineerData.github);
+                    employeeArray.push(newEngineer);
                 }
 
                 )
@@ -63,10 +67,15 @@ const questions = () =>
                 name: "school",
                 message: "Which school does the intern attend?"
             }).then((internData) => {
-                new Intern(data.name, data.ID, data.email, internData.school)
+                let newIntern = new Intern(data.name, data.ID, data.email, internData.school);
+                employeeArray.push(newIntern);
             }
             )
 
         };
 
+    }
+    );
 
+questions()
+render(employeeArray);
