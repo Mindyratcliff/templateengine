@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Main Team Page</title>
-    <!--Reset CSS and link Bootstrap-->
-    <link rel="stylesheet" href="reset.css" />
+    <!--Link Bootstrap and Font Awesome-->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
@@ -22,11 +21,14 @@
       integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-      <h1>Team</h1>
+    <div class="p-3 mb-2 bg-danger text-white">
+      <h1><i class="fas fa-address-card"></i> Team Roster</h1>
+    </div>
       {{ team }}
+      
 
   </body>
 </html>

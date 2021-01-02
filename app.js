@@ -7,7 +7,7 @@ const Manager = require("./lib/Manager.js")
 const render = require("./lib/htmlRenderer")
 
 const employeeArray = [];
-
+//Create the bank of questions
 const questions = [
     {
       type: "input",
@@ -33,7 +33,7 @@ const questions = [
 
 
 ]
-
+//Create the function to ask questions
 const ask = () => {
     inquirer.prompt(questions).then((data) => {
         if (data.role == "manager") {
@@ -48,7 +48,7 @@ const ask = () => {
         
     })
 }
-
+//Role specific functions 
 const askManager = (data) => {
     inquirer.prompt({
         type: "input",
@@ -93,7 +93,7 @@ const askIntern = (data) => {
 
 
 };
-
+//Function to allow for asking again if additional employees are to be added
 const askAgain = () => {
     inquirer.prompt({
             type: 'confirm',
@@ -107,12 +107,12 @@ const askAgain = () => {
         }
         else{
             let html = render(employeeArray);
-            console.log(html);
+            fs.writeFileSync("output/team.html", html, "utf8")
         }
     }
     );
 
 
 };
-
+//Call the function to run the CLI
 ask();
