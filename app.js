@@ -73,8 +73,12 @@ const questions = () =>
             )
 
         };
+        
+        
 
     }
+    console.log("Success! Your employee has been added.")
+    
     );
 
 questions()
