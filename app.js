@@ -37,19 +37,19 @@ const questions = [
 const ask = () => {
     inquirer.prompt(questions).then((data) => {
         if (data.role == "manager") {
-        askManager();
+        askManager(data);
         }
         if (data.role == "engineer"){
-        askEngineer();
+        askEngineer(data);
         }
         if (data.role == "intern"){
-        askIntern();
+        askIntern(data);
         }
-        askAgain();
+        
     })
 }
 
-const askManager = () => {
+const askManager = (data) => {
     inquirer.prompt({
         type: "input",
         name: "office",
@@ -57,13 +57,13 @@ const askManager = () => {
     }).then((managerData) => {
         let newManager = new Manager(data.name, data.ID, data.email, managerData.office);
         employeeArray.push(newManager);
-        let html = render(employeeArray);
-        console.log(html);
+        askAgain();
+        
     }
         );
 };
 
-const askEngineer = () => {
+const askEngineer = (data) => {
     inquirer.prompt({
         type: "input",
         name: "github",
@@ -71,13 +71,14 @@ const askEngineer = () => {
     }).then((engineerData) => {
         let newEngineer = new Engineer(data.name, data.ID, data.email, engineerData.github);
         employeeArray.push(newEngineer);
-        let html = render(employeeArray);
+        askAgain();
+        
     }
 
     );
 };
 
-const askIntern = () => {
+const askIntern = (data) => {
     inquirer.prompt({
         type: "input",
         name: "school",
@@ -85,7 +86,8 @@ const askIntern = () => {
     }).then((internData) => {
         let newIntern = new Intern(data.name, data.ID, data.email, internData.school);
         employeeArray.push(newIntern);
-        let html = render(employeeArray);
+        askAgain();
+        
     }
     );
 
@@ -103,8 +105,14 @@ const askAgain = () => {
             ask();
 
         }
+        else{
+            let html = render(employeeArray);
+            console.log(html);
+        }
     }
     );
 
 
 };
+
+ask();
